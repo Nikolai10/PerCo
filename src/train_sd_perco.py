@@ -79,8 +79,8 @@ from diffusers.utils import check_min_version, deprecate, is_wandb_available, ma
 from diffusers.utils.import_utils import is_xformers_available
 from diffusers.utils.torch_utils import is_compiled_module
 
-# from tfds_interface import prepare_dataset
-from openimages_v6 import OpenImagesV6
+from tfds_interface import prepare_dataset
+# from openimages_v6 import OpenImagesV6
 from pipeline_sd_perco import StableDiffusionPipelinePerco
 
 # we load our custom UNet2DConditionModel
@@ -788,11 +788,11 @@ def main():
 
     with accelerator.main_process_first():
         # Set the training transforms
-        # train_dataset = prepare_dataset(args.dataset_name, train_transforms)
-        train_dataset = OpenImagesV6(root=cfg_perco.data_dir,
-                                     split='train',
-                                     image_list_file=cfg_perco.image_list_file,
-                                     transform=train_transforms)
+        train_dataset = prepare_dataset(args.dataset_name, train_transforms)
+        # train_dataset = OpenImagesV6(root=cfg_perco.data_dir,
+        #                             split='train',
+        #                             image_list_file=cfg_perco.image_list_file,
+        #                             transform=train_transforms)
 
     # DataLoaders creation:
     train_dataloader = torch.utils.data.DataLoader(
@@ -800,8 +800,6 @@ def main():
         shuffle=True,
         batch_size=args.train_batch_size,
         num_workers=args.dataloader_num_workers,
-        pin_memory=True,
-        prefetch_factor=2,
     )
 
     # Scheduler and math around the number of training steps.

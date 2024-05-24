@@ -15,16 +15,16 @@
 
 class ConfigPerco:
     # TFDS config
-    # data_dir = "/tf/notebooks/tensorflow_datasets/"
-    data_dir = "/tf/notebooks/OpenImagesV6"
-    image_list_file = "/tf/notebooks/OpenImagesV6/list_train_files.txt"
+    data_dir = "/content/tensorflow_datasets/"
+    # data_dir = "/content/OpenImagesV6"
+    # image_list_file = "/content/OpenImagesV6/list_train_files.txt"
 
     # global path (adjust to your needs)
-    global_path = "/tf/notebooks/PerCo/src"
+    global_path = "/content/PerCo/src"
 
     # BLIP 2 config ({Salesforce/blip2-opt-2.7b, Salesforce/blip2-opt-2.7b-coco, Salesforce/blip2-opt-6.7b, Salesforce/blip2-opt-6.7b-coco})
     # Overview of compatible models: https://huggingface.co/Salesforce
-    blip_model = "Salesforce/blip2-opt-2.7b-coco"
+    blip_model = "Salesforce/blip2-opt-2.7b"
     max_number_tokens = 32
 
     # PerCo
