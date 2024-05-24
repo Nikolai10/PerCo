@@ -1,0 +1,29 @@
+# Step 0 (Prerequisite): Install Tensorflow/ Docker, see https://www.tensorflow.org/install/docker for more details.
+
+# Step 1: Install Docker image (+mount volume // adjust to your needs)
+# A100-based system
+docker run --ipc=host --gpus all -it --rm --name tensorflow_2_14_0_gpu_jupyter -v /flash/projects:/tf/notebooks -p 8890:8888 -p 6010:6010 -p 6011:6011 -p 6012:6012 tensorflow/tensorflow:2.14.0-gpu-jupyter
+
+# H100-based system
+docker run --ipc=host --gpus all -it --rm --name tensorflow_2_16_1_gpu_jupyter -v /flash/projects:/tf/notebooks -p 8890:8888 -p 6010:6010 -p 6011:6011 -p 6012:6012 tensorflow/tensorflow:2.16.1-gpu-jupyter
+
+# Step 2: Install Diffusers (0.27.0.dev0) to src // please see File Structure for more details
+git clone --branch v0.27.0 https://github.com/huggingface/diffusers.git
+cd diffusers
+pip install .
+
+# Step 3: Install Dependencies
+pip install bitsandbytes
+pip install accelerate
+pip install transformers==4.37.2
+pip install vector-quantize-pytorch
+pip install torchac
+pip install Ninja
+pip install onnxruntime-training
+pip install tensorflow-datasets
+pip install datasets
+pip install torchvision
+pip install compressai
+pip install torchmetrics
+pip install clean-fid
+pip install lpips
