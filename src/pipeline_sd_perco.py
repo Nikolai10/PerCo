@@ -54,7 +54,7 @@ from diffusers.pipelines.stable_diffusion.safety_checker import StableDiffusionS
 
 # we load our custom UNet2DConditionModel
 from unet_2d_perco import UNet2DConditionModel
-from hyper_encoder_v2 import HyperEncoder
+from hyper_encoder import HyperEncoder
 
 # from hyper_encoder import HyperEncoder
 

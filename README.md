@@ -16,6 +16,10 @@ Under active development.
 
 ## Updates
 
+***05/29/2024***
+1. Switched back to official hyper-encoder design, resolved training instabilities
+2. Significantly improved results (limited to 50k optimization steps)
+
 ***05/24/2024***
 
 1. Initial release of this project
@@ -25,11 +29,11 @@ Under active development.
 Visual Comparison on the [Kodak dataset](https://r0k.us/graphics/kodak/), for our lowest bit-rate (0.0019bpp). Column 1: ground truth. Columns 2-5: set of reconstructions that reflect the uncertainty about the original image source. 
 
 <div align="center">
-  <img src="./res/doc/figures/lo_kodim13_a river runs through a forest with mountains in the background.png" width="95%" alt="lo_kodim13_a river runs through a forest with mountains in the background.png">
+  <img src="./res/doc/figures/lo_kodim13_a river runs through a rocky forest with mountains in the background.png" width="95%" alt="lo_kodim13_a river runs through a rocky forest with mountains in the background.png">
 </div>
 
 ```python
-Global conditioning: "a river runs through a forest with mountains in the background".
+Global conditioning: "a river runs through a rocky forest with mountains in the background".
 ```
 
 <div align="center">
@@ -40,14 +44,13 @@ Global conditioning: "a river runs through a forest with mountains in the backgr
 Global conditioning: "two parrots standing next to each other with leaves in the background".
 ```
 
-More visual results can be found [here](./res/doc/figures).
+More visual results can be found [~~here~~ coming soon](./res/doc/figures).
 
 ## Quantitative Performance
 
-In this section we quantitatively compare the performance of PerCo (SD v2.1) to the officially reported numbers. All models were trained using a reduced set of optimization steps (15k). Note that the performance is bounded by the LDM auto-encoder, denoted as SD v2.1 auto-encoder.
+In this section we quantitatively compare the performance of PerCo (SD v2.1) to the officially reported numbers. All models were trained using a reduced set of optimization steps (50k). Note that the performance is bounded by the LDM auto-encoder, denoted as SD v2.1 auto-encoder.
 
-We generally find that PerCo (SD v2.1) provides competitive results with PerCo (official) for the ultra-low bit-rate setting (0.0019bpp), both in terms of distortion (MS-SSIM, LPIPS) and perception (FID, KID). 
-As we approach the higher bit-rates, we observe that the performance gap grows - this could indicate that the use of local features produced by our [hyper_encoder_v2](/src/hyper_encoder_v2.py) has not yet reached its full potential. We believe that investigating different architectures (e.g. based on [SwinT-ChARM](https://openreview.net/pdf?id=IDwN6xjHnK8)) is a promising direction for future work. Also note that PerCo (official) was trained using 5 epochs (9M training samples / batch size 160 * 5 epochs = 281250 optimization steps) vs. 15k steps, which roughly corresponds to 5%.
+Note that PerCo (official) was trained using 5 epochs (9M training samples / batch size 160 * 5 epochs = 281250 optimization steps) vs. 50k steps, which roughly corresponds to 18%.
 
 We will continue our experiments and hope to release more powerful variants at a later stage.
 
@@ -110,7 +113,6 @@ We also provide a simplified Google Colab demo that integrates any [tfds](https:
 
 **Note:** 
 - we have not adjusted the finetuning grid to 50 timesteps as described in the paper. 
-- we use a custom hyper-encoder based on HiFiC ([hyper_encoder_v2.py](./src/hyper_encoder_v2.py)), which for our setup provides more stable gradients compared to the official variant based on ELIC ([hyper_encoder.py](./src/hyper_encoder.py)). 
 - we use [Stable Diffusion v2.1](https://huggingface.co/stabilityai/stable-diffusion-2-1) as LDM, due to its native shift from epsilon to v-prediction. In general, however, this project also supports SD 1.X variants with minor adjustments:
     ```bash
     from helpers import update_scheduler
@@ -121,7 +123,7 @@ We also provide a simplified Google Colab demo that integrates any [tfds](https:
     ```
 
 ## Pre-trained Models
-Pre-trained models corresponding to 0.1250bpp, 0.0313bpp and 0.0019bpp can be downloaded [here](https://drive.google.com/drive/folders/11xHN61L7GqrJqEQbdtagbKBwMj1KZMf5?usp=sharing).
+Pre-trained models corresponding to 0.1250bpp, 0.0313bpp and 0.0019bpp can be downloaded [~~here~~ coming soon](https://drive.google.com/drive/folders/11xHN61L7GqrJqEQbdtagbKBwMj1KZMf5?usp=sharing).
 
 All models were trained using a DGX H100 using the following command:
 
@@ -136,7 +138,7 @@ All models were trained using a DGX H100 using the following command:
 --train_batch_size=20 \
 --gradient_accumulation_steps=1 \
 --num_train_epochs=5 \
---max_train_steps 15000 \
+--max_train_steps 50000 \
 --validation_steps 500 \
 --prediction_type="v_prediction" \
 --checkpointing_steps 500 \
@@ -177,8 +179,8 @@ If you find better hyper-parameters, please share them with the community.
          ├── compression_utils.py                       # CLI tools for PerCo compression/ decompression
          ├── config.py                                  # PerCo global configuration (training + inference)
          ├── helpers.py                                 # helper functionality
-         ├── hyper_encoder_v2.py                        # hyper-encoder + quantization (based on HiFiC, slow but steady learning)
-         ├── hyper_encoder.py                           # hyper-encoder + quantization (based on ELIC, unstable for our setup)
+         ├── hyper_encoder_v2.py                        # hyper-encoder + quantization (based on HiFiC)
+         ├── hyper_encoder.py                           # hyper-encoder + quantization (based on ELIC)
          ├── lpips_stable.py                            # stable LPIPS implementation based on MS-ILLM/ NeuralCompression
          ├── openimages_v6.py                           # minimalistic dataloader for OpenImagesV6
          ├── pipeline_sd_perco.py                       # custom HuggingFace Pipeline which bundles image generation (=decompression)

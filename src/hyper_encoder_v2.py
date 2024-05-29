@@ -219,6 +219,7 @@ class HyperEncoder(ModelMixin, ConfigMixin):
         # VQ
         self.quantizer = VectorQuantize(dim=num_filters_out,
                                         codebook_size=cfg_cs,
+                                        use_cosine_sim = True,
                                         codebook_dim=codebook_dim)
 
     def forward(self, z: Tensor) -> Tensor:
