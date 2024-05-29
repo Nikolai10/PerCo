@@ -85,7 +85,7 @@ from pipeline_sd_perco import StableDiffusionPipelinePerco
 
 # we load our custom UNet2DConditionModel
 from unet_2d_perco import UNet2DConditionModel
-from hyper_encoder_v2 import HyperEncoder
+from hyper_encoder import HyperEncoder
 # from hyper_encoder import HyperEncoder
 from helpers import prob_mask_like, find_linear_layers, update_scheduler, get_pred_original_sample
 
