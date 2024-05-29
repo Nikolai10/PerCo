@@ -32,7 +32,7 @@ class ConfigPerco:
 
     # see Table 2 in https://arxiv.org/abs/2309.15505 for more information
     # key: target bit-rate
-    # value: tuple (x, y), where x and correspond to the spatial and codebook size, respectively.
+    # value: tuple (x, y), where x and y correspond to the spatial and codebook size, respectively.
     rate_cfg = {}
     rate_cfg[0.1250] = (64, 256)
     rate_cfg[0.0937] = (64, 64)
