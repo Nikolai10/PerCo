@@ -24,7 +24,7 @@ class ConfigPerco:
 
     # BLIP 2 config ({Salesforce/blip2-opt-2.7b, Salesforce/blip2-opt-2.7b-coco, Salesforce/blip2-opt-6.7b, Salesforce/blip2-opt-6.7b-coco})
     # Overview of compatible models: https://huggingface.co/Salesforce
-    blip_model = "Salesforce/blip2-opt-2.7b"
+    blip_model = "Salesforce/blip2-opt-2.7b-coco"
     max_number_tokens = 32
 
     # PerCo
