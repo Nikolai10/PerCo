@@ -16,6 +16,12 @@ Under active development.
 
 ## Updates
 
+***06/16/2024***
+1. Finetuned whole U-Net (not just linear layers)
+2. Slightly improved results (limited to 50k optimization steps)
+3. Released pre-trained models
+4. Ablation studies: experimented with [LoRA](https://arxiv.org/abs/2106.09685) and [FSQ](https://arxiv.org/abs/2309.15505) (no improvements achieved)
+
 ***05/29/2024***
 1. Switched back to official hyper-encoder design, resolved training instabilities
 2. Significantly improved results (limited to 50k optimization steps)
@@ -37,6 +43,14 @@ Global conditioning: "a river runs through a rocky forest with mountains in the 
 ```
 
 <div align="center">
+  <img src="./res/doc/figures/lo_kodim22_a red barn with a pond in the background.png" width="95%" alt="lo_kodim22_a red barn with a pond in the background.png">
+</div>
+
+```python
+Global conditioning: "a red barn with a pond in the background".
+```
+
+<div align="center">
   <img src="./res/doc/figures/lo_kodim23_two parrots standing next to each other with leaves in the background.png" width="95%" alt="lo_kodim23_two parrots standing next to each other with leaves in the background.png">
 </div>
 
@@ -44,7 +58,7 @@ Global conditioning: "a river runs through a rocky forest with mountains in the 
 Global conditioning: "two parrots standing next to each other with leaves in the background".
 ```
 
-More visual results can be found [~~here~~ coming soon](./res/doc/figures).
+More visual results can be found [here](./res/doc/figures).
 
 ## Quantitative Performance
 
@@ -95,7 +109,7 @@ We also provide a simplified Google Colab demo that integrates any [tfds](https:
         - [x] weight decay 0.01
         - [x] bs = 160 (w/o LPIPS), bs = 40 (w/ LPIPS)
         - [x] linear warm-up 10k
-        - [x] train hyper-encoder + finetune linear layers of U-Net
+        - [x] train hyper-encoder + finetune ~~linear~~ all layers of U-Net
         - [x] exchange traditional noise prediction objective with v-prediction
         - [x] add LPIPS loss for target rates > 0.05bpp  
     - [x] add classifier-free guidance (drop text-conditioning in 10% of iterations)
@@ -123,7 +137,7 @@ We also provide a simplified Google Colab demo that integrates any [tfds](https:
     ```
 
 ## Pre-trained Models
-Pre-trained models corresponding to 0.1250bpp, 0.0313bpp and 0.0019bpp can be downloaded [~~here~~ coming soon](https://drive.google.com/drive/folders/11xHN61L7GqrJqEQbdtagbKBwMj1KZMf5?usp=sharing).
+Pre-trained models corresponding to 0.1250bpp, 0.0313bpp and 0.0019bpp can be downloaded [here](https://drive.google.com/drive/folders/11xHN61L7GqrJqEQbdtagbKBwMj1KZMf5?usp=sharing).
 
 All models were trained using a DGX H100 using the following command:
 
