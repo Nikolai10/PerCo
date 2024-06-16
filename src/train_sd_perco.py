@@ -732,6 +732,7 @@ def main():
     else:
         optimizer_cls = torch.optim.AdamW
 
+    '''
     # Get the names of all linear layers
     linear_layer_names = find_linear_layers(unet)
     # Get the parameters of all linear layers
@@ -743,10 +744,11 @@ def main():
     percentage_linear_params = (total_linear_params / total_params) * 100
     print()
     print(f"Percentage of Linear Layer Parameters: {percentage_linear_params:.2f}%")
-
+    
     trainable_parameters = linear_params + list(hyper_enc.parameters())
+    '''
 
-    # trainable_parameters = list(unet.parameters()) + list(hyper_enc.parameters())
+    trainable_parameters = list(unet.parameters()) + list(hyper_enc.parameters())
 
     optimizer = optimizer_cls(
         trainable_parameters,
