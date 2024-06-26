@@ -64,7 +64,8 @@ More visual results can be found [here](./res/doc/figures).
 
 In this section we quantitatively compare the performance of PerCo (SD v2.1) to the officially reported numbers. All models were trained using a reduced set of optimization steps (50k). Note that the performance is bounded by the LDM auto-encoder, denoted as SD v2.1 auto-encoder.
 
-Note that PerCo (official) was trained using 5 epochs (9M training samples / batch size 160 * 5 epochs = 281250 optimization steps) vs. 50k steps, which roughly corresponds to 18%.
+We generally obtain highly competitive results in terms of perception (FID, KID), especially for the ultra-low bit-rates, but at the cost of lower image fidelity (MS-SSIM, LPIPS). Note that PerCo (official) was trained using 5 epochs (9M training samples / batch size 160 * 5 epochs = 281250 optimization steps) vs. 50k steps, which roughly corresponds to 18%.
+Also note that we have not yet considered LPIPS as an auxiliary loss, which is known to increase performance at higher bit-rates.
 
 We will continue our experiments and hope to release more powerful variants at a later stage.
 
