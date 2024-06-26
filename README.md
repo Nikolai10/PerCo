@@ -35,7 +35,7 @@ Under active development.
 Visual Comparison on the [Kodak dataset](https://r0k.us/graphics/kodak/), for our lowest bit-rate (0.0019bpp). Column 1: ground truth. Columns 2-5: set of reconstructions that reflect the uncertainty about the original image source. 
 
 <div align="center">
-  <img src="./res/doc/figures/lo_kodim13_a river runs through a rocky forest with mountains in the background.png" width="95%" alt="lo_kodim13_a river runs through a rocky forest with mountains in the background.png">
+  <img src="./res/doc/figures/0.0019_kodim13_a river runs through a rocky forest with mountains in the background.png" width="95%" alt="0.0019_kodim13_a river runs through a rocky forest with mountains in the background.png">
 </div>
 
 ```python
@@ -43,7 +43,7 @@ Global conditioning: "a river runs through a rocky forest with mountains in the 
 ```
 
 <div align="center">
-  <img src="./res/doc/figures/lo_kodim22_a red barn with a pond in the background.png" width="95%" alt="lo_kodim22_a red barn with a pond in the background.png">
+  <img src="./res/doc/figures/0.0019_kodim22_a red barn with a pond in the background.png" width="95%" alt="0.0019_kodim22_a red barn with a pond in the background.png">
 </div>
 
 ```python
@@ -51,7 +51,7 @@ Global conditioning: "a red barn with a pond in the background".
 ```
 
 <div align="center">
-  <img src="./res/doc/figures/lo_kodim23_two parrots standing next to each other with leaves in the background.png" width="95%" alt="lo_kodim23_two parrots standing next to each other with leaves in the background.png">
+  <img src="./res/doc/figures/0.0019_kodim23_two parrots standing next to each other with leaves in the background.png" width="95%" alt="0.0019_kodim23_two parrots standing next to each other with leaves in the background.png">
 </div>
 
 ```python
