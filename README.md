@@ -105,7 +105,7 @@ We also provide a simplified Google Colab demo that integrates any [tfds](https:
     - [x] obtain captions dynamically at runtime
     - [x] adjust conditioning logic (z_l, z_g)
     - [x] optimizer AdamW
-        - [x] 5 epochs, on 512x512 crops (for now: limited to 15k iterations)
+        - [x] 5 epochs, on 512x512 crops (for now: limited to 50k iterations)
         - [x] peak learning rate ~~1e-4~~ -> we use 1e-5
         - [x] weight decay 0.01
         - [x] bs = 160 (w/o LPIPS), bs = 40 (w/ LPIPS)
