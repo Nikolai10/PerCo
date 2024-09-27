@@ -219,10 +219,6 @@ This project is based on/ takes inspiration from:
 
 We thank the authors for providing us with the official evaluation points as well as helpful insights.
 
-## Interested in Working with Me?
-
-Feel free to reach out: nikolai.koerber@tum.de. I am particularly interested in PhD intern positions.
-
 ## License
 
 [Apache License 2.0](LICENSE)
