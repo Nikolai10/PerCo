@@ -219,6 +219,10 @@ This project is based on/ takes inspiration from:
 
 We thank the authors for providing us with the official evaluation points as well as helpful insights.
 
+## How to Cite
+
+If you find this work helpful, consider citing:
+
 ```
 @inproceedings{
     k{\"o}rber2024perco,
