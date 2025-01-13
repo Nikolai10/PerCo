@@ -219,6 +219,28 @@ This project is based on/ takes inspiration from:
 
 We thank the authors for providing us with the official evaluation points as well as helpful insights.
 
+```
+@inproceedings{
+    k{\"o}rber2024perco,
+    title={PerCo ({SD}): Open Perceptual Compression},
+    author={Nikolai K{\"o}rber and Eduard Kromer and Andreas Siebert and Sascha Hauke and Daniel Mueller-Gritschneder and Bj{\"o}rn Schuller},
+    booktitle={Workshop on Machine Learning and Compression, NeurIPS 2024},
+    year={2024},
+    url={https://openreview.net/forum?id=8xvygfdRWy}
+}
+```
+
+```
+@inproceedings{
+    careil2024towards,
+    title={Towards image compression with perfect realism at ultra-low bitrates},
+    author={Marlene Careil and Matthew J. Muckley and Jakob Verbeek and St{\'e}phane Lathuili{\`e}re},
+    booktitle={The Twelfth International Conference on Learning Representations},
+    year={2024},
+    url={https://openreview.net/forum?id=ktdETU9JBg}
+}
+```
+
 ## License
 
 [Apache License 2.0](LICENSE)
